@@ -1,4 +1,14 @@
+'use client'
+
+import { useState } from 'react'
+
 export default function DisputeMyAccountPage() {
+  const [showModal, setShowModal] = useState(true)
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-3xl font-bold mb-4">Dispute My Account</h1>
@@ -92,7 +102,7 @@ export default function DisputeMyAccountPage() {
           <div className="bg-blue-50 border-l-4 border-blue-400 p-6">
             <h3 className="text-lg font-semibold mb-2">Need to Speak with Someone?</h3>
             <p className="mb-2">You can contact us directly to speak with an account representative:</p>
-            <p className="font-semibold text-lg">1-800-XXX-XXXX</p>
+            <p className="font-semibold text-lg">833-381-4416</p>
           </div>
 
           <div className="bg-gray-100 p-4 rounded text-sm">
@@ -102,8 +112,8 @@ export default function DisputeMyAccountPage() {
           <div className="bg-gray-50 p-4 rounded text-sm">
             <p><strong>Elite Portfolio Management</strong></p>
             <p>PO Box [Insert]</p>
-            <p>[City, State ZIP]</p>
-            <p>1-800-XXX-XXXX</p>
+            <p>Conroe TX, 77301</p>
+            <p>833-381-4416</p>
           </div>
 
           <button type="submit" className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
@@ -111,6 +121,29 @@ export default function DisputeMyAccountPage() {
           </button>
         </form>
       </div>
+
+      {/* Pop-up Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 p-6">
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-blue-600 mb-4">IMPORTANT</h3>
+              <p className="text-sm text-gray-700 mb-4">
+                This is an attempt to collect a debt. Any information will be used for that purpose. This communication is from a debt collector.
+              </p>
+              <p className="text-sm text-gray-700 mb-6">
+                Calls to and from this company may be monitored and/or recorded.
+              </p>
+              <button
+                onClick={closeModal}
+                className="w-full bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800 transition-colors duration-200"
+              >
+                I Accept
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 } 
